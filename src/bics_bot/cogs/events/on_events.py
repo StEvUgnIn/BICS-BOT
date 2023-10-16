@@ -4,6 +4,7 @@ from nextcord.ext import commands, tasks
 from bics_bot.embeds.welcome_embed import WelcomeEmbed
 from bics_bot.utils.server_utilities import get_member_by_id, get_channel_id_by_name
 
+import os
 import json
 import datetime
 import random
@@ -42,7 +43,7 @@ class OnEvents(commands.Cog):
             """
             file_name = "./bics_bot/texts/birthday_messages.txt"
 
-            with open(file_name, "r") as file:
+            with open(os.path.join(__path__, file_name), "r") as file:
                 if member.id in (241589375190827018, 332622290665603072):
                     message = file.readline()
                 else:
@@ -57,7 +58,7 @@ class OnEvents(commands.Cog):
         guild = self.client.get_guild(guild_id)
         general_id = get_channel_id_by_name(guild=guild, name="general")
 
-        file_name = "../db/birthdays.json"
+        file_name = os.path.join(os.path.dirname(__file__), "../db/birthdays.json")
 
         # Check if the JSON file exists
         try:

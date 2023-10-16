@@ -1,3 +1,4 @@
+import os
 import yaml
 from nextcord import Guild, Role
 
@@ -36,7 +37,7 @@ def retrieve_server_ids(guild: Guild):
     """
     TODO: Missing docstrings
     """
-    with open("./bics_bot/config/server_ids.yaml", "r") as f:
+    with open(os.path.join(os.path.dirname(__file__), os.path.normcase("../config/server_ids.yaml")), "r") as f:
         server_ids = yaml.safe_load(f)
         config = {"roles": {}, "channels": {}, "categories": {}}
 

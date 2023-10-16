@@ -1,3 +1,4 @@
+import os
 import nextcord
 from nextcord.ext import commands
 from nextcord import application_command, Interaction
@@ -117,7 +118,7 @@ class IntroCmd(commands.Cog):
 
         # Storing the user's birthday in JSON file
         if len(birthday) > 0:
-            file_name = "../db/birthdays.json"
+            file_name = os.path.join(os.path.dirname(__file__), "../db/birthdays.json")
             store_birthday(file_name, birthday, user.id)
         
         # Changing the nickname to Name + Surname initial
@@ -127,9 +128,9 @@ class IntroCmd(commands.Cog):
             In case of any question, feel free to ping an <@&{server_ids['roles']['admin']}>\n\n"""
 
         if year == "incoming":
-            msg = msg + read_txt("./bics_bot/texts/introduction_incoming.txt")
+            msg = msg + read_txt(os.path.join(os.path.dirname(__file__), "./bics_bot/texts/introduction_incoming.txt"))
         else:
-            msg = msg + read_txt("./bics_bot/texts/introduction.txt")
+            msg = msg + read_txt(os.path.join(os.path.dirname(__file__), "./bics_bot/texts/introduction.txt"))
 
         await interaction.response.send_message(
             embed=LoggerEmbed(msg),

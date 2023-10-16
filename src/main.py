@@ -38,11 +38,11 @@ def load_extensions(bot: commands.Bot) -> None:
     Returns:
         None
     """
-    for filename in os.listdir("./bics_bot/cogs/events"):
+    for filename in os.listdir(os.path.join(os.path.dirname(__file__), "./bics_bot/cogs/events")):
         if filename.endswith(".py") and filename != "__init__.py":
             bot.load_extension(f"bics_bot.cogs.events.{filename[:-3]}")
 
-    for filename in os.listdir("./bics_bot/cogs/commands"):
+    for filename in os.listdir(os.path.join(os.path.dirname(__file__), "./bics_bot/cogs/commands")):
         if filename.endswith(".py") and filename != "__init__.py":
             bot.load_extension(f"bics_bot.cogs.commands.{filename[:-3]}")
 
@@ -67,7 +67,7 @@ def main() -> None:
 
     bot = commands.Bot(
         command_prefix="!",
-        description=read_txt("./bics_bot/texts/bot_description.txt"),
+        description=read_txt(os.path.join(os.path.dirname(__file__), "./bics_bot/texts/bot_description.txt")),
         intents=get_intents(),
     )
 

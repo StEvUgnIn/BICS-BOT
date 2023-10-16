@@ -1,10 +1,11 @@
+import os
 from nextcord import Interaction
 import csv
 import datetime
 import time
 from bics_bot.utils.server_utilities import retrieve_server_ids
 
-CALENDAR_FILE_PATH = "./bics_bot/data/calendar.csv"
+CALENDAR_FILE_PATH = os.path.join(os.path.dirname(__file__), "./bics_bot/data/calendar.csv")
 
 
 def retrieve_courses_text_channels_names(

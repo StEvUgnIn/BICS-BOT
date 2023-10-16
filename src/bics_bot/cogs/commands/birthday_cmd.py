@@ -6,6 +6,7 @@ from bics_bot.embeds.logger_embed import LoggerEmbed, LogLevel
 
 from dateutil.parser import parse, ParserError
 import json
+import os
 
 def is_valid_birthday(birthday):
     """Validate the entered birthday format."""
@@ -87,7 +88,7 @@ class BirthdayCmd(commands.Cog):
             return
 
         # Storing the user's birthday in JSON file
-        file_name = "../db/birthdays.json"
+        file_name = os.path.join(os.path.dirname(__file__), "../db/birthdays.json")
         store_birthday(file_name, birthday, user.id)
 
         msg = f"Birthday Added\nYour birthday ({birthday}) has been recorded."
