@@ -1,9 +1,10 @@
+import os
 import csv
 from bics_bot.utils.channels_utils import get_unixtime, get_user_year
 from bics_bot.config.server_ids import MESSAGE_CALENDAR_ID, CHANNEL_CALENDAR_ID
 from bics_bot.embeds.logger_embed import LoggerEmbed, WARNING_LEVEL
 
-PATH_CALENDAR = "./bics_bot/data/calendar.csv"
+PATH_CALENDAR = os.path.join(os.path.dirname(__file__), "./bics_bot/data/calendar.csv")
 
 
 class CalendarEntry:

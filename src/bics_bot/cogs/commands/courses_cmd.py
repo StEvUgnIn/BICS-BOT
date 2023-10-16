@@ -1,3 +1,4 @@
+import os
 import nextcord
 from nextcord.ext import commands
 from nextcord import application_command, Interaction, Guild
@@ -76,7 +77,7 @@ class CoursesCmd(commands.Cog):
         await interaction.response.send_message(
             embed=LoggerEmbed(
                 "Enrollment Status",
-                read_txt("./bics_bot/texts/enrollment.txt"),
+                read_txt(os.path.join(os.path.dirname(__file__), "./bics_bot/texts/enrollment.txt")),
             ),
             view=view,
             ephemeral=True,
@@ -130,7 +131,7 @@ class CoursesCmd(commands.Cog):
         await interaction.response.send_message(
             embed=LoggerEmbed(
                 "Unenrollment Status",
-                read_txt("./bics_bot/texts/unenrollment.txt"),
+                read_txt(os.path.join(os.path.dirname(__file__), "./bics_bot/texts/unenrollment.txt")),
             ),
             view=view,
             ephemeral=True,

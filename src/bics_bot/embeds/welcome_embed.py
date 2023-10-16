@@ -1,3 +1,4 @@
+import os
 from nextcord import Embed
 from nextcord import Colour
 
@@ -14,5 +15,5 @@ class WelcomeEmbed(Embed):
         super().__init__(colour=Colour.blue(), title=title)
         self.description = (
             f"Hey **{user_name}** and welcome to **{server_name}**, the **unofficial** BICS discord server!\n"
-            + read_txt("./bics_bot/texts/welcome_embed.txt")
+            + read_txt(os.path.join(os.path.dirname(__file__), "./bics_bot/texts/welcome_embed.txt"))
         )

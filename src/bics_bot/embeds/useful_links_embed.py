@@ -1,3 +1,4 @@
+import os
 from nextcord import Embed
 from nextcord import Colour
 
@@ -12,4 +13,4 @@ class UsefulLinksEmbed(Embed):
     def __init__(self):
         title = "Useful links"
         super().__init__(colour=Colour.blue(), title=title)
-        self.description = read_txt("./bics_bot/texts/useful_links_embed.txt")
+        self.description = read_txt(os.path.join(os.path.dirname(__file__), "./bics_bot/texts/useful_links_embed.txt"))
